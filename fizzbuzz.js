@@ -1,18 +1,36 @@
 function fizzbuzz(num) {
 
-  if (num % 3 === 0 && num % 5 === 0){
-    return "fizzbuzz";
+  if (typeof num !== 'number') {
+    return "Error: the argument must be a number";
   }
 
-  if (num % 3 === 0){
-    return "fizz";
+  const divisible = (divisor, num) => num % divisor === 0;
+
+  if (num === 0) {
+    return 0;
   }
 
-  if (num % 5 === 0){
-    return "buzz";
+  if (divisible(3, num) && divisible(5, num)) {
+    return "FizzBuzz";
+  }
+
+  if (divisible(3, num)) {
+    return "Fizz";
+  }
+
+  if (divisible(5, num)) {
+    return "Buzz";
   }
 
   return num;
 }
+
+function print(num) {
+  for (let i = 0; i <= num; i++) {
+    console.log(`${i}: ${fizzbuzz(i)}`);
+  }
+}
+
+print("100");
 
 module.exports = fizzbuzz;
